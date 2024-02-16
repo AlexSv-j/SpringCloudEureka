@@ -15,7 +15,7 @@ public class Account {
 
     @GetMapping("/getAccount")
     public String getAccount() {
-        logger.debug("getAccount service start");
+        logger.debug("Get account from service");
 
         return "Account from account service";
     }

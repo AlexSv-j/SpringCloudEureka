@@ -67,7 +67,7 @@ public class PersonsEndpoint {
     public String getRetry(@RequestHeader("CorrelationId") String correlationId) throws TimeoutException {
         logger.debug("Retry: Test correlation id - {}", 123);
         throw new TimeoutException("wrong");
-//        throw new NullPointerException("wrong");
+//        throw new NullPointerException("NullPointerException");
 //        return testProperty;
     }
 

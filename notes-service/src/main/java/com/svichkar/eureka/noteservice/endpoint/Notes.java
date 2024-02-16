@@ -34,36 +34,27 @@ public class Notes {
             @ApiResponse(
                     responseCode = "200",
                     description = "Notes returned",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = String.class)) }
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = String.class))}
             )
-//            ,
-//            @ApiResponse(
-//                    responseCode = "500",
-//                    description = "HTTP Status Internal Server Error",
-//                    content = @Content(
-//                            schema = @Schema(implementation = ErrorResponseDto.class)
-//                    )
-//            )
-    }
-    )
+    })
     @GetMapping("/getNotes")
     @SneakyThrows
     public String getNotes(@RequestHeader("CorrelationId") String correlationId) {
         logger.debug("Debug log with CorrelationId - {}", correlationId);
 //        TimeUnit.MILLISECONDS.sleep(DELAY += 50);
-        System.out.println("Call for noteservice. Delay = " +  DELAY.toString());
-//        throw new RuntimeException("wrong");
+        System.out.println("Call for noteservice. Delay = " + DELAY.toString());
+//        throw new RuntimeException("RuntimeException");
         return "Required Notes";
     }
 
     @RateLimiter(name = "rateLimiter", fallbackMethod = "rateLimiterFallback")
     @GetMapping("/rateLimiter")
-    public String rateLimiter(){
+    public String rateLimiter() {
         return "Rate Limiter endpoint";
     }
 
-    public String rateLimiterFallback (Throwable t){
+    public String rateLimiterFallback(Throwable t) {
         return "rateLimiter fallback is used";
     }
 }
